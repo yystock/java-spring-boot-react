@@ -29,7 +29,6 @@ export default function SignUpForm() {
       },
     })
       .then((response) => {
-        console.log(response.data);
         toast.success("Sign up Succesfully!");
         login(email, password);
       })

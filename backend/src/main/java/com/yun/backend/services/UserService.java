@@ -1,5 +1,6 @@
 package com.yun.backend.services;
 
+import com.yun.backend.dtos.ChangeUserNameDto;
 import com.yun.backend.dtos.CredentialsDto;
 import com.yun.backend.dtos.SignUpDto;
 import com.yun.backend.dtos.UserDto;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.CharBuffer;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -56,4 +58,18 @@ public class UserService {
         return userMapper.toUserDto(user);
     }
 
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public void deleteById(Long id){
+        userRepository.deleteById(id);
+    }
+    public UserDto changeUsername(ChangeUserNameDto changeUserNameDto) {
+        User user = userRepository.findByEmail(changeUserNameDto.email())
+                .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
+        user.setUserName(changeUserNameDto.userName());
+        User savedUser = userRepository.save(user);
+        return userMapper.toUserDto(savedUser);
+    }
 }

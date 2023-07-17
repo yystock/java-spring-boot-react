@@ -29,11 +29,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       },
     })
       .then((response) => {
+        console.log("logging in");
         setAuthHeader(response.data.token);
         setIsLoggedIn(true);
         setUser(user);
         navigate("/private");
         toast.success("Logged in Succesfully!");
+        console.log("logged in");
       })
       .catch((err) => {
         setAuthHeader("");

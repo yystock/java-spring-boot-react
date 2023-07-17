@@ -3,6 +3,12 @@ type userType = {
   email: string;
 };
 
+type userArray = {
+  id: int;
+  userName: string;
+  email: string;
+}[];
+
 type authContextType = {
   user: userType | {};
   isLoggedIn: boolean;
