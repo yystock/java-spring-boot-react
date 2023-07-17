@@ -2,7 +2,7 @@
 
 Java Spring Boot JWT auth + React
 
-####Backend:
+#### Backend:
 Features:
 
 - ✅ User Registration
@@ -11,7 +11,7 @@ Features:
 - ✅ Protected Routes
 - ✅ Postgres Database
 
-####Frontend:
+#### Frontend:
 Features:
 
 - ✅ Protected Routes
